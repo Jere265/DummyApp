@@ -1,79 +1,79 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Frontend Mobile - AI Ticket IT (React Native)
 
-# Getting Started
+Aplicación móvil desarrollada en **React Native** con TypeScript para la plataforma de venta de entradas **AI Ticket It**.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+---
 
-## Step 1: Start the Metro Server
+## 🎨 Identidad Visual y Diseño
+- **Paleta de Colores:** Verde Esmeralda (`#10B981`) y Menta (`#ECFDF5`), inspirada en el logo del trabajo práctico ("AI Ticket It - Entradas a un click"), combinada con fondos limpios en blanco y Slate (`#0F172A`).
+- **Arquitectura de Componentes:** Componentes nativos y modulares de React Native (`View`, `Text`, `TouchableOpacity`, `ScrollView`, `FlatList`, `Modal`), sin dependencias pesadas de librerías nativas para asegurar portabilidad inmediata en cualquier dispositivo.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+---
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## 📱 Pantallas y Flujos Funcionales (Casos de Uso del PDF)
 
+| Pantalla | Componente / Archivo | Funcionalidades / Casos de Uso del PDF |
+| :--- | :--- | :--- |
+| **Explorar Espectáculos** | `src/screens/ExploreScreen.tsx` | - Búsqueda en tiempo real por texto (CU 3).<br>- Filtrado por categorías (Música, Teatro, Deportes) (CU 3).<br>- **Ordenamiento múltiple por Precio, Fecha y Reputación del organizador** (CU 11).<br>- Marcar/desmarcar favoritos en un click (❤️). |
+| **Detalle del Evento & Checkout** | `src/screens/EventDetailScreen.tsx` | - Galería de imágenes y descripción del show.<br>- Selector de tipo de entrada (General, Platea, VIP con precio y cupo) (CU 12).<br>- Selector de cantidad sin superar cupo disponible (CU 12).<br>- Cálculo del total en tiempo real y confirmación de compra.<br>- Reputación del organizador y enlace directo a sus opiniones previas (CU 10). |
+| **Mis Tickets / Compras** | `src/screens/MyPurchasesScreen.tsx` | - Visualización de entradas con código de ticket (CU 1).<br>- **Contador de días restantes para eventos confirmados** ("Faltan 14 días", "¡Es hoy!") (CU 1).<br>- **Cancelar compra y reembolso inmediato** restituyendo cupos (CU 7, 8).<br>- Validación de ingreso ("Usar entrada") (CU 9).<br>- Acceso al chat y a calificar. |
+| **Chat de la Compra** | `src/screens/ChatScreen.tsx` | - Comunicación bidireccional entre comprador y organizador dentro de la misma compra (CU 5 y 6).<br>- Historial cronológico de consultas. |
+| **Calificar Experiencia** | `src/screens/ReviewModal.tsx` | - Calificación con estrellas (1 a 5) y comentario escrito (CU 9).<br>- Habilitado exclusivamente tras haber utilizado la entrada. |
+| **Reputación del Organizador** | `src/screens/OrganizerReviewsScreen.tsx` | - Visualización de reseñas de eventos anteriores del organizador para conocer experiencias previas antes de comprar (CU 10).<br>- Promedio general de satisfacción. |
+| **Eventos Favoritos** | `src/screens/FavoritesScreen.tsx` | - Acceso directo a los eventos guardados por el comprador ("guardar eventos favoritos"). |
+| **Panel del Organizador** | `src/screens/OrganizerDashboardScreen.tsx` | - **Publicar nuevo evento** con múltiples tipos de entrada, precios y cupos (CU 4).<br>- **Estado de ventas en vivo:** entradas vendidas vs disponibles por cada tipo y compras agrupadas por estado (CU 2).<br>- Botón para reiniciar datos de prueba (`Reset Demo`). |
+
+---
+
+## 🛠️ Cómo Ejecutar la Aplicación
+
+### 1. Iniciar el Backend Primero
+En una terminal en la carpeta `backend/`:
 ```bash
-# using npm
+cd backend
 npm start
-
-# OR using Yarn
-yarn start
 ```
+El backend iniciará en `http://localhost:3001` y precargará los datos de prueba (`seedInitialData`).
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
+### 2. Instalar Dependencias en el Frontend
+En otra terminal en la carpeta `frontend/`:
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+cd frontend
+npm install
 ```
 
-### For iOS
+### 3. Ejecutar la App Mobile
+- **Para Android:**
+  ```bash
+  npm run android
+  ```
+- **Con Expo (si utilizas Expo en tu dispositivo):**
+  ```bash
+  npx expo start
+  ```
+- **Iniciar Metro Bundler:**
+  ```bash
+  npm start
+  ```
 
-```bash
-# using npm
-npm run ios
+---
 
-# OR using Yarn
-yarn ios
-```
+## 🌐 Configuración de Conexión con el Backend
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+La app cuenta con un modal de configuración de IP accesible tocando el indicador de estado en la cabecera:
+- **Emulador Android Studio:** Utiliza `http://10.0.2.2:3001/api`
+- **Simulador iOS:** Utiliza `http://localhost:3001/api`
+- **Celular físico (Expo Go o APK):** Utiliza `http://<TU_IP_LOCAL>:3001/api` (ej. `http://192.168.1.50:3001/api`)
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+---
 
-## Step 3: Modifying your App
+## 🎥 Consejos para el Video de Entrega (Página 9 del PDF)
 
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+El trabajo pide un video de **5 a 10 minutos** explicando la arquitectura y mostrando un flujo completo de punta a punta:
+1. **Flujo recomendado:**
+   - **Paso 1:** Iniciar como **Comprador** en el catálogo, buscar un evento (ej. "Cosquín"), filtrar por categoría y ordenar por precio.
+   - **Paso 2:** Ingresar al evento, mostrar las estrellas del organizador y ver sus reseñas previas.
+   - **Paso 3:** Seleccionar tipo de entrada y cantidad, y presionar "Comprar Entradas".
+   - **Paso 4:** Ir a "Mis Tickets", mostrar el ticket con el badge de **días restantes** y abrir el **Chat** enviando una pregunta.
+   - **Paso 5:** Cambiar el rol arriba a **Organizador**, responder el mensaje desde el chat o ver el reporte de ventas en el panel.
+   - **Paso 6:** Volver a Comprador, marcar la entrada como "Utilizada" y dejar una reseña de 5 estrellas con comentario.

@@ -1,34 +1,37 @@
 {
-  "name": "DummyApp",
-  "version": "0.0.1",
-  "private": true,
+  "name": "frontend",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "App móvil React Native - AI Ticket IT",
+  "main": "index.tsx",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint src"
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.74.0"
+    "react-native": "0.73.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@babel/preset-env": "^7.20.0",
-    "@babel/runtime": "^7.20.0",
-    "@react-native/babel-preset": "0.74.81",
-    "@react-native/eslint-config": "0.74.81",
-    "@react-native/metro-config": "0.74.81",
-    "@react-native/typescript-config": "0.74.81",
-    "@types/react": "^18.2.6",
-    "@types/react-test-renderer": "^18.0.0",
-    "babel-jest": "^29.6.3",
-    "eslint": "^8.19.0",
-    "jest": "^29.6.3",
-    "prettier": "2.8.8",
+    "@babel/core": "^7.23.9",
+    "@babel/runtime": "^7.23.9",
+    "@react-native-community/cli": "^13.6.9",
+    "@react-native-community/eslint-config": "^3.2.0",
+    "@react-native/metro-config": "^0.76.9",
+    "@tsconfig/react-native": "^3.0.0",
+    "@types/jest": "^29.5.11",
+    "@types/react": "^18.2.45",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.55.0",
+    "jest": "^29.7.0",
+    "metro-react-native-babel-preset": "^0.76.8",
+    "prettier": "^3.1.1",
+    "react-native-svg-transformer": "^1.5.3",
     "react-test-renderer": "18.2.0",
-    "typescript": "5.0.4"
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=18"
